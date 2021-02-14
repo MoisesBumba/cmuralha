@@ -18,10 +18,11 @@ class CreateContactsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('address');
-            $table->text('telephone');
-            $table->text('email-address');
-            $table->text('site');
-            $table->timestamps();
+            $table->string ('telephone');
+            $table->string('email');
+            $table->string('site');
+            $table->enum('status', ['A', 'R'])->default('A')->comment('A-> Ativar postado. R -> Rascumho, não mostrar');
+            $table->timestamps(); 
         });
     }
 
@@ -32,6 +33,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('contacts'); 
     }
 }

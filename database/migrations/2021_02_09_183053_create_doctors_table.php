@@ -9,7 +9,7 @@ class CreateDoctorsTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return void 
      */
     public function up()
     {
@@ -18,6 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->text('specialty');
             $table->text('description');
+            $table->enum('status', ['A', 'R'])->default('A')->comment('A-> Ativar postado. R -> Rascumho, não mostrar');
             $table->string('image', 200)->nullable();
             $table->timestamps();
         });

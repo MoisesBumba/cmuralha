@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->text('subject-matter');
             $table->text('telephone');
             $table->text('message');
+            $table->enum('status', ['A', 'R'])->default('A')->comment('A-> Ativar postado. R -> Rascumho, não mostrar');
             $table->timestamps();
         });
     }

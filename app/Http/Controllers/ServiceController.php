@@ -9,7 +9,7 @@ use App\Http\Controllers\StandardController;
 class ServiceController extends StandardController
 {
     protected $model;      
-    protected $name = 'medicos'; 
+    protected $name = 'Serviços'; 
     protected $view = 'painel.service';
     protected $upload = ['name' => 'image', 'path' => 'services'];
     protected $route = 'servicos';
@@ -23,7 +23,7 @@ class ServiceController extends StandardController
     
     public function index() 
     {
-        $title = "Servicios {$this->name}";  
+        $title = "Gestão {$this->name}";  
 
         $data = $this->model->paginate($this->totalPage);
 

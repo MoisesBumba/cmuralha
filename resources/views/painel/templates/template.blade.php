@@ -114,27 +114,27 @@
               <i class="icon_desktop"></i>
               <span>Quem Somos</span>
               </a>
-            </li> 
+            </li>  
             <li>
                 <a class="" href="/painel/servicos">
-                <i class="icon_desktop"></i>
+                <i class="icon_desktop"></i> 
                 <span>Serviços Médicos</span>
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="/painel/doctor">
                 <i class="icon_desktop"></i>
                 <span>Dotores</span>
                 </a>
             </li>
-            <li>
+            <li> 
                 <a class="" href="">
                 <i class="icon_desktop"></i>
                 <span>Blog</span>
                 </a>
             </li>
             <li>
-                <a class="" href="">
+                <a class="" href="/painel/contact">
                 <i class="icon_desktop"></i>
                 <span>Contacto</span>
                 </a>

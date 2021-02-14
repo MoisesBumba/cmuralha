@@ -17,9 +17,12 @@ use App\Http\Controllers\{
     PainelController,
     BannerController,
     AboutController,
-    ServiceController
+    ServiceController,
+    DoctorController,
+    ContactController
+   
     
-
+    
 };
 
 
@@ -27,10 +30,12 @@ use App\Http\Controllers\{
  * Rotas Painel
  *************************************************************/
 
-Route::get('/painel', [PainelController::class, 'index']);
+Route::get('/painel', [PainelController::class, 'index'] );
 Route::resource('/painel/banner', BannerController::class ); 
 Route::resource('/painel/sobre', AboutController::class ); 
 Route::resource('/painel/servicos', ServiceController::class ); 
+Route::resource('/painel/doctor', DoctorController::class ); 
+Route::resource('/painel/contact', ContactController::class); 
 
 
 
