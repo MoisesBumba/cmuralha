@@ -2,7 +2,7 @@
 
 @section('contect')
 <!--main content start-->
-<section id="main-content"> 
+<section id="main-content">  
     <section class="wrapper"> 
       <!--overview start--> 
       <div class="row">

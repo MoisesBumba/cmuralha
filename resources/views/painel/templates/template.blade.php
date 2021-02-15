@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" href="img/favicon.png">
 
-<title>CLINICA GRANDE MURALHA DA CHINA</title>
+<title>{{ $title ?? 'CLINICA GRANDE MURALHA DA CHINA' }}</title>
 
   <!-- Bootstrap CSS -->
   <link href="{{url('assets/painel/css/bootstrap.min.css')}}" rel="stylesheet">

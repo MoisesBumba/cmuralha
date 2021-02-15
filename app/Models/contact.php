@@ -21,7 +21,7 @@ class contact extends Model
                 'description'     => 'required|min:3|max:100',
                 'address'   => 'required|min:3|max:100',
                 'telephone'   => 'required|digits:9',
-                'email'        => 'required|string|email',
+                'email'        => 'required|min:3|max:100',
                 'site'         => 'required|min:3|max:100',
                 'status'        => 'required|in:A,R',
 
@@ -36,13 +36,13 @@ class contact extends Model
     public function message()
     {
         return [
-            'title.required'          => 'O Campo Titulo e Obrigatorio',
-            'description.required'     => 'O Campo Descrição e Obrigatorio',
-            'address.required'      => 'O Campo Endereço e Obrigatorio',
-            'telephone.required'   => 'O Campo Telemovel e Obrigatorio',
-            'email.required'        => 'O Campo Email e Obrigatorio',
-            'site.required'         => 'O Campo Site e Obrigatorio',
-            'status.required'        => 'O Campo Status e Obrigatorio',
+            'title.required'            => 'O Campo Titulo e Obrigatorio',
+            'description.required'      => 'O Campo Descrição e Obrigatorio',
+            'address.required'          => 'O Campo Endereço e Obrigatorio',
+            'telephone.required'        => 'O Campo Telemovel e Obrigatorio',
+            'email.required'            => 'O Campo Email e Obrigatorio',
+            'site.required'             => 'O Campo Site e Obrigatorio',
+            'status.required'           => 'O Campo Status e Obrigatorio',
 
         ];
     }

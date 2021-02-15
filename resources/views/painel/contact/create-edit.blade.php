@@ -8,7 +8,7 @@
             <!--overview start-->
             <div class="row">
                 <div class="col-lg-12">
-                <h3 class="page-header"><i class="fa fa-laptop"></i>Contacto</h3>
+                <h3 class="page-header"><i class="fa fa-laptop"></i>{{ $title ?? 'CLINICA GRANDE MURALHA DA CHINA' }}</h3>
                 <ol class="breadcrumb">
                     <li><i class="fa fa-home"></i><a href="{{url('/painel')}}">Home</a></li>
                     <li><i class="fa fa-laptop"></i><a href="{{url('/painel/contact')}}">Contacto</a></li>
@@ -20,7 +20,7 @@
     <div class="col-lg-9">
     <section class="panel">
         <header class="panel-heading">
-            <b>{{$data ->name ?? 'Nova'}}
+            <b>{{$data ->name ?? 'Novo'}}
         </header>
         <div class="panel-body">
             @if (isset($errors) && count($errors) > 0)

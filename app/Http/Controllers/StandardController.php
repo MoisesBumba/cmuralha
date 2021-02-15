@@ -10,12 +10,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 
-
+ 
 class StandardController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $totalPage = 10; 
+    protected $totalPage = 5; 
     protected $upload = false; 
 
     /**
@@ -27,7 +27,7 @@ class StandardController extends BaseController
     public function index()
     { 
        
-
+ 
         $title = "Listagem das {$this->name}s";
 
         $data = $this->model->paginate($this->totalPage);
@@ -42,7 +42,7 @@ class StandardController extends BaseController
      */
     public function create()
     { 
-        $title = "Cadastrar Nova {$this->name}s"; 
+        $title = "Cadastrar Novo {$this->name}"; 
 
         return view("{$this->view}.create-edit", compact('title'));
     }
@@ -190,6 +190,7 @@ class StandardController extends BaseController
      */
     public function destroy($id)
     {
+        
         $data = $this->model->find($id);
 
         $delete = $data->delete();

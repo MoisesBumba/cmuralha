@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
-use Illuminate\Http\Request;
-use App\Http\Controllers\StandardController;
+use App\Models\Contact; 
 
+use App\Http\Controllers\StandardController;
 class ContactController extends StandardController 
 {
     protected $model;      
     protected $name = 'Contacto';  
     protected $view = 'painel.contact';
-    protected $upload = ['name' => 'image', 'path' => 'contacts']; 
     protected $route = 'contact'; 
     
 
