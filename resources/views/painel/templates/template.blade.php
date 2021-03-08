@@ -71,12 +71,13 @@
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> Meu Perfil</a>
+                <a href="#"><i class="icon_profile"></i>{{ Auth::user()->name }}</a>
               </li>
              
               <li>
-                <a href=""><i class="icon_key_alt"></i>Sair</a>
-              </li>
+                <a href="route('logout')"><i class="icon_key_alt"></i>Sair</a>
+        
+              </li> 
             </ul>
           </li>
           <!-- user login dropdown end -->

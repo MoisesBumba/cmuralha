@@ -16,7 +16,7 @@ class StandardController extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     protected $totalPage = 5; 
-    protected $upload = false; 
+    
 
     /**
      * Display a listing of the resource.

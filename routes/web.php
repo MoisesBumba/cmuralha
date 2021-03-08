@@ -20,26 +20,20 @@ use App\Http\Controllers\{
     ServiceController,
     DoctorController,
     ContactController
-   
-    
     
 };
-
 
 /*************************************************************
  * Rotas Painel
  *************************************************************/
-
-Route::get('/painel', [PainelController::class, 'index'] );
-Route::resource('/painel/banner', BannerController::class ); 
-Route::resource('/painel/sobre', AboutController::class ); 
-Route::resource('/painel/servicos', ServiceController::class ); 
-Route::resource('/painel/doctor', DoctorController::class ); 
-Route::resource('/painel/contact', ContactController::class); 
-
-
-
-
+Route::middleware(['auth'])->group(function(){
+    Route::get('/painel', [PainelController::class, 'index'] );
+    Route::resource('/painel/banner', BannerController::class ); 
+    Route::resource('/painel/sobre', AboutController::class ); 
+    Route::resource('/painel/servicos', ServiceController::class ); 
+    Route::resource('/painel/doctor', DoctorController::class ); 
+    Route::resource('/painel/contact', ContactController::class); 
+});
 /*************************************************************
  * End Routes Rota Painel
  *************************************************************/
@@ -57,9 +51,6 @@ Route::get('/', [SiteController::class, 'index']);
  * End Routes Site
  *************************************************************/
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

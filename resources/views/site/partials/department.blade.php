@@ -111,9 +111,7 @@
 			</div>
 		</section>
 
-		
-
-    <section class="ftco-intro img" style="background-image: url(images/bg_2.jpg);">
+		<section class="ftco-intro img" style="background-image: url('assets/images/bg_2.jpg');">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row justify-content-center">
@@ -130,7 +128,7 @@
     	<div class="container-fluid px-0">
     		<div class="row no-gutters">
     			<div class="col-md-4 d-flex">
-    				<div class="img img-dept align-self-stretch" style="background-image: url(images/dept-1.jpg);"></div>
+    				<div class="img img-dept align-self-stretch" style="background-image: url(assets/images/dept-1.jpg);"></div>
     			</div>
 
     			<div class="col-md-8">
@@ -229,3 +227,5 @@
     		</div>
     	</div>
     </section>
+
+

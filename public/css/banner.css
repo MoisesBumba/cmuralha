@@ -1,0 +1,111 @@
+#inicio {
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+#inicio img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+}
+#inicio .carousel-item::before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+#inicio .carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+#inicio .carousel-content {
+  text-align: center;
+}
+#inicio h2 {
+  color: #fff;
+  margin-bottom: 30px;
+  font-size: 48px;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  #inicio h2 {
+    font-size: 28px;
+  }
+}
+#inicio p {
+  width: 80%;
+  margin: 0 auto 30px auto;
+  color: #fff;
+}
+@media (min-width: 1024px) {
+  #inicio p {
+    width: 60%;
+  }
+}
+#inicio .carousel-fade .carousel-inner .carousel-item {
+  transition-property: opacity;
+}
+#inicio .carousel-fade .carousel-inner .carousel-item,
+#inicio .carousel-fade .carousel-inner .active.carousel-item-left,
+#inicio .carousel-fade .carousel-inner .active.carousel-item-right {
+  opacity: 0;
+}
+#inicio .carousel-fade .carousel-inner .active,
+#inicio .carousel-fade .carousel-inner .carousel-item-next.carousel-item-left,
+#inicio .carousel-fade .carousel-inner .carousel-item-prev.carousel-item-right {
+  opacity: 1;
+  transition: 0.5s;
+}
+#inicio .carousel-fade .carousel-inner .carousel-item-next,
+#inicio .carousel-fade .carousel-inner .carousel-item-prev,
+#inicio .carousel-fade .carousel-inner .active.carousel-item-left,
+#inicio .carousel-fade .carousel-inner .active.carousel-item-right {
+  left: 0;
+  transform: translate3d(0, 0, 0);
+}
+#inicio .carousel-control-prev, #inicio .carousel-control-next {
+  width: 10%;
+}
+@media (min-width: 1024px) {
+  #inicio .carousel-control-prev, #inicio .carousel-control-next {
+    width: 5%;
+  }
+}
+#inicio .carousel-control-next-icon, #inicio .carousel-control-prev-icon {
+  background: none;
+  font-size: 32px;
+  line-height: 1;
+}
+#inicio .carousel-indicators li {
+  cursor: pointer;
+}
+#inicio .btn-get-started {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 32px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #e4ae4b;
+}
+#inicio .btn-get-started:hover {
+  background: #fff;
+  color: #e4ae4b;
+}

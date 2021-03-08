@@ -14,20 +14,22 @@ class AboutController extends StandardController
     protected $upload = ['name' => 'image', 'path' => 'about'];
     protected $route = 'sobre';
 
-    public function __construct(Abaut $about)
+    public function __construct(Abaut $about) 
     {
         $this->model = $about;
     } 
     
     public function index()
     {
-        $title = "Quem {$this->name}";  
+        
+        $title = "Gestão {$this->name}";   
 
         $data = $this->model->paginate($this->totalPage);
 
         return view("{$this->view}.index", compact('data','title'));
 
     }
+    
 
  
 

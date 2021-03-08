@@ -11,7 +11,7 @@
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/doc-1.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(assets/images/doc-1.jpg);"></div>
 							</div>
 							<div class="text pt-3 text-center">
 								<h3 class="mb-2">Dr. Lloyd Wilson</h3>
@@ -32,7 +32,7 @@
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/doc-2.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(assets/images/doc-2.jpg);"></div>
 							</div>
 							<div class="text pt-3 text-center">
 								<h3 class="mb-2">Dr. Rachel Parker</h3>
@@ -53,7 +53,7 @@
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/doc-3.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(assets/images/doc-3.jpg);"></div>
 							</div>
 							<div class="text pt-3 text-center">
 								<h3 class="mb-2">Dr. Ian Smith</h3>
@@ -74,7 +74,7 @@
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/doc-4.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(assets/images/doc-4.jpg);"></div>
 							</div>
 							<div class="text pt-3 text-center">
 								<h3 class="mb-2">Dr. Alicia Henderson</h3>
