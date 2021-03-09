@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
-
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
- 
+
 class StandardController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $totalPage = 5; 
-    
+    protected $totalPage = 5;
+    protected $upload = false;
 
     /**
      * Display a listing of the resource.
@@ -25,9 +25,9 @@ class StandardController extends BaseController
      */
 
     public function index()
-    { 
-       
- 
+    {
+
+
         $title = "Listagem das {$this->name}s";
 
         $data = $this->model->paginate($this->totalPage);
@@ -41,8 +41,8 @@ class StandardController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        $title = "Cadastrar Novo {$this->name}"; 
+    {
+        $title = "Cadastrar Novo {$this->name}";
 
         return view("{$this->view}.create-edit", compact('title'));
     }
@@ -53,7 +53,7 @@ class StandardController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         //Validar Dados do Formulario
         $this->validate($request, $this->model->rules());
@@ -65,29 +65,29 @@ class StandardController extends BaseController
         if( $this->upload && $request->hasFile($this->upload['name']) ){
             //pega o arquivo
             $image = $request->file($this->upload['name']);
-            
+
             //Define o nome para o arquivo
-            $nameFile = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
-            
+            $nameFile = Str::of($request->title)->slug('-').'.'.$image->getClientOriginalExtension();
+
             $upload = $image->storeAs($this->upload['path'], $nameFile);
 
-            if( $upload ) 
+            if( $upload )
                 $dataForm[$this->upload['name']] = $nameFile;
-            else   
+            else
                     return redirect()
                                 ->route("{$this->route}.create")
                                 ->withErrors(['errors' => 'Erro no Upload'])
                                 ->withInput();
-            
+
         }
         //Insere os dados d Formulario
         $insert = $this->model->create($dataForm);
- 
+
         if( $insert )
             return redirect()
                         ->route("{$this->route}.index")
                         ->with(['success' => 'Cadastro realizado com sucesso']);
-        else 
+        else
             return redirect()
                         ->route("{$this->route}.create")
                         ->withErrors(['errors' => 'Falha ao cadastrar'])
@@ -101,13 +101,13 @@ class StandardController extends BaseController
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
-         
-        $data = $this->model->find($id);
- 
-        $title = "{$this->name}: $data->name"; 
+    {
 
-        return view("{$this->view}.show", compact('data', 'title')); 
+        $data = $this->model->find($id);
+
+        $title = "{$this->name}: $data->name";
+
+        return view("{$this->view}.show", compact('data', 'title'));
 
     }
 
@@ -121,7 +121,7 @@ class StandardController extends BaseController
     {
         $data = $this->model->find($id);
 
-        $title = "Editar {$this->name}: $data->name"; 
+        $title = "Editar {$this->name}: $data->name";
 
         return view("{$this->view}.create-edit", compact('data','title'));
     }
@@ -146,18 +146,21 @@ class StandardController extends BaseController
 
         //Verificar se existe o arquivo
         if( $this->upload && $request->hasFile( $this->upload['name'] ) ) {
+
             //pega Arquivo
             $image = $request->file( $this->upload['name'] );
- 
+
             //Verificar se o nome do Arquivo não existe
             if ($data->image == '') {
-                $nameImage = uniqid(date('YmdHis')).'.'.$image->getClientOriginalExtension();
+
+
+                $nameImage = Str::of($request->title)->slug('-') . '.' .$image->getClientOriginalExtension();
                 $dataForm[ $this->upload['name'] ] = $nameImage;
             }else {
                 $nameImage = $data->image;
                 $dataForm[ $this->upload['name'] ] = $data->image;
-            }  
-            
+            }
+
             $upload = $image->storeAs($this->upload['path'], $nameImage);
             if( $upload )
                 $dataForm[$this->upload['name']] = $nameImage;
@@ -167,14 +170,14 @@ class StandardController extends BaseController
                                 ->withErrors(['errors' => 'Erro no Upload'])
                                 ->withInput();
         }
-        //Alterar os dados 
+        //Alterar os dados
         $update = $data->update($dataForm);
 
         if( $update )
             return redirect()
                         ->route("{$this->route}.index")
                         ->with(['success' => 'Alteração realizado com sucesso']);
-        else 
+        else
             return redirect()
                         ->route("{$this->route}.edit", ['id' => $id])
                         ->withErrors(['errors' => 'Falha ao Editar'])
@@ -190,8 +193,12 @@ class StandardController extends BaseController
      */
     public function destroy($id)
     {
-        
+
         $data = $this->model->find($id);
+
+        if (Storage::exists($data->image))
+                    Storage::delete($data->image);
+
 
         $delete = $data->delete();
 
@@ -199,15 +206,15 @@ class StandardController extends BaseController
                 return redirect()
                     ->route("$this->route.index")
                         ->with(['success' => "{$data->name} excluido com sucesso! "]);
-        else 
+        else
                 return redirect()->route("$this->route.edit", ['id' => $id])
                             ->withErrors(['errors' => 'Falha ao excluir Categoria']);
-                
+
     }
 
     public function search(Request $request)
     {
-        
+
         //Recuperar os dados do formulario
         $dataForm = $request->except('_token');
 
@@ -215,11 +222,10 @@ class StandardController extends BaseController
         $data = $this->model
                     ->Where('name', 'LIKE', "%{$dataForm['key-search']}%")
                     ->paginate($this->totalPage);
-            
+
         return view("{$this->view}.index", compact('data', 'dataForm'));
     }
 }
 
 
 
- 
